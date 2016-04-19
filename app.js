@@ -12,6 +12,11 @@ var db = mongoose.model('oid', new Schema({
 
 app.get("/",function(req,res){
     var oid = req.query.oid;
+    
+    if (!oid) {
+        res.send("hello world");
+    } else {
+    
     db.findOneAndUpdate(
         { oid: oid},
         { oid: oid},
@@ -21,6 +26,7 @@ app.get("/",function(req,res){
         return data !== null ? res.send(data) : res.json({"isDuplicate": false});
         }
     );
+    }
 });
 
 app.listen(process.env.PORT || 3000);

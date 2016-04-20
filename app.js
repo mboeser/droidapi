@@ -1,5 +1,6 @@
 var express     =   require("express");
 var app         =   express();
+var helmet      =   require('helmet');
 var mongoose    =   require('mongoose');
 var Schema      =   mongoose.Schema;
 var mongoURI    =   process.env.MONGODB_URI || 'mongodb://localhost/droidapi';
@@ -11,6 +12,8 @@ var db = mongoose.model('oid', new Schema({
     ping: { type: Number, require: true, default: 0 }
 }));
 
+app.use(helmet());
+
 app.get("/",function(req,res){
     var oid = req.query.oid;
     
@@ -19,12 +22,12 @@ app.get("/",function(req,res){
     } else {
     
     db.findOneAndUpdate(
-        { oid: oid},
+        { oid: oid },
         { oid: oid, $inc: { ping: 1 }},
         { upsert: true, runValidators: true, setDefaultsOnInsert: true },
         function (err, data) {
         if (err) throw err;
-        return data !== null ? res.send({"isDuplicate": true}) : res.json({"isDuplicate": false});
+        return data !== null ? res.send(1) : res.send(0);
         }
     );
     }

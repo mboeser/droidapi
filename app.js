@@ -7,7 +7,8 @@ var mongoDB     =   mongoose.connect(mongoURI).connection;
 
 var db = mongoose.model('oid', new Schema({
     oid: { type: Number, require: true, index: {unique: true }},
-    date: { type: Date, require: true, default: Date.now }
+    date: { type: Date, require: true, default: Date.now },
+    ping: { type: Number, require: true, default: 0 }
 }));
 
 app.get("/",function(req,res){
@@ -19,7 +20,7 @@ app.get("/",function(req,res){
     
     db.findOneAndUpdate(
         { oid: oid},
-        { oid: oid},
+        { oid: oid, ping: 1},
         { upsert: true, runValidators: true, setDefaultsOnInsert: true },
         function (err, data) {
         if (err) throw err;

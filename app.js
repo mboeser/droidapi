@@ -20,7 +20,7 @@ app.get("/",function(req,res){
     
     db.findOneAndUpdate(
         { oid: oid},
-        { oid: oid, seq: 1},
+        { oid: oid, $inc: { seq: 1 }},
         { upsert: true, runValidators: true, setDefaultsOnInsert: true },
         function (err, data) {
         if (err) throw err;

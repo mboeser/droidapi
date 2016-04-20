@@ -27,7 +27,7 @@ app.get("/",function(req,res){
         { upsert: true, runValidators: true, setDefaultsOnInsert: true },
         function (err, data) {
         if (err) throw err;
-        return data !== null ? res.send(1) : res.send(0);
+        return data !== null ? res.send('1') : res.send('0');
         }
     );
     }

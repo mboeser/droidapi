@@ -24,7 +24,7 @@ app.get("/",function(req,res){
         { upsert: true, runValidators: true, setDefaultsOnInsert: true },
         function (err, data) {
         if (err) throw err;
-        return data !== null ? res.send(data) : res.json({"isDuplicate": false});
+        return data !== null ? res.send({"isDuplicate": true}) : res.json({"isDuplicate": false});
         }
     );
     }

@@ -12,7 +12,7 @@ var db = mongoose.model('oid', new Schema({
     ping: { type: Number, require: true, default: 0 }
 }));
 
-app.use(helmet());
+//app.use(helmet());
 
 app.get("/",function(req,res){
     var oid = req.query.oid;

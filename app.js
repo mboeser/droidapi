@@ -1,6 +1,7 @@
 var express     =   require("express");
 var app         =   express();
 var helmet      =   require('helmet');
+var cors        =   require('cors');
 var mongoose    =   require('mongoose');
 var Schema      =   mongoose.Schema;
 var mongoURI    =   process.env.MONGODB_URI || 'mongodb://localhost/droidapi';
@@ -12,6 +13,7 @@ var db = mongoose.model('oid', new Schema({
     ping: { type: Number, require: true, default: 0 }
 }));
 
+app.use(cors());
 app.use(helmet());
 
 app.get("/",function(req,res){

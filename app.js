@@ -17,7 +17,7 @@ app.use(cors());
 app.use(helmet());
 
 app.get("/",function(req,res){
-    var oid = req.query.oid.trim();
+    var oid = Number(req.query.oid);
     console.log(oid);
     if (!oid || isNaN(oid)) {
         res.send("hello world");

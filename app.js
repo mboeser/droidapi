@@ -8,7 +8,7 @@ var mongoURI    =   process.env.MONGODB_URI || 'mongodb://localhost/droidapi';
 var mongoDB     =   mongoose.connect(mongoURI).connection;
 
 var db = mongoose.model('oid', new Schema({
-    oid: { type: Number, integer: true, require: true, index: {unique: true }},
+    oid: { type: String, require: true, index: {unique: true }},
     date: { type: Date, require: true, default: Date.now },
     ping: { type: Number, require: true, default: 0 }
 }));

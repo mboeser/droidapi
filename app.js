@@ -6,12 +6,15 @@ var mongoose    =   require('mongoose');
 var Schema      =   mongoose.Schema;
 var mongoURI    =   process.env.MONGODB_URI || 'mongodb://localhost/droidapi';
 var mongoDB     =   mongoose.connect(mongoURI).connection;
+var integerValidator = require('mongoose-integer');
 
 var db = mongoose.model('oid', new Schema({
-    oid: { type: String, require: true, index: {unique: true }},
+    oid: { type: Number, integer: true, require: true, index: {unique: true }},
     date: { type: Date, require: true, default: Date.now },
     ping: { type: Number, require: true, default: 0 }
 }));
+
+db.plugin(integerValidator);
 
 app.use(cors());
 app.use(helmet());

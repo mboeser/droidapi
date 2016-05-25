@@ -18,6 +18,7 @@ app.use(helmet());
 
 app.get("/",function(req,res){
     var oid = req.query.oid;
+    console.log(req.query.oid);
     console.log(typeof oid);
     if (!oid || isNaN(oid)) {
         res.send("hello world");

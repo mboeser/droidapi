@@ -23,6 +23,8 @@ var db = mongoose.model('oid', new Schema({
     ping: { type: Number, require: true, default: 0 }
 }));
 
+db.plugin(integerValidator);
+
 app.use(cors());
 app.use(helmet());
 

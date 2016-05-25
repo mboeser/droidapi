@@ -16,12 +16,11 @@ var db = mongoose.model('oid', new Schema({
 app.use(cors());
 app.use(helmet());
 
-mongoose.set('debug', true)
+//mongoose.set('debug', true)
 
 app.get("/",function(req,res){
-    var oid = parseInt(req.query.oid);
-    console.log(req.query);
-    //console.log(typeof oid);
+    var oid = Number(req.query.oid);
+
     if (!oid || isNaN(oid)) {
         res.send("hello world");
     } else {

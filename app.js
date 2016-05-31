@@ -1,4 +1,4 @@
-var relic       = require('newrelic');
+require('newrelic');
 var express     =   require("express");
 var app         =   express();
 var helmet      =   require('helmet');
@@ -14,7 +14,6 @@ var db = mongoose.model('oid', new Schema({
     ping: { type: Number, require: true, default: 0 }
 }));
 
-app.use(relic());
 app.use(cors());
 app.use(helmet());
 

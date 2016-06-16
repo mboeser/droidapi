@@ -5,7 +5,7 @@ var helmet      =   require('helmet');
 var cors        =   require('cors');
 var mongoose    =   require('mongoose');
 var Schema      =   mongoose.Schema;
-var mongoURI    =   process.env.MONGODB_URI || 'mongodb://localhost/droidapi';
+var mongoURI    =   process.env.MONGOHQ_URL || 'mongodb://localhost/droidapi';
 var mongoDB     =   mongoose.connect(mongoURI).connection;
 
 var db = mongoose.model('oid', new Schema({

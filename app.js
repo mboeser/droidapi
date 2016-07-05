@@ -19,7 +19,7 @@ app.use(helmet());
 
 //mongoose.set('debug', true)
 
-app.get("/",function(req,res){
+app.get("/*",function(req,res){
     var oid = Number(req.query.oid);
 
     if (!oid || isNaN(oid)) {
